@@ -20,6 +20,15 @@ class Characteristic():
     def __repr__(self):
         return f"{self.text} - Category: {self.category} - Associated Conditions: {self.condition_weightings.keys()}"
 
+    @classmethod
+    def from_dict(cls, input_dict: dict):
+        return cls(
+            uuid=input_dict['uuid'],
+            text=input_dict['text'],
+            category=input_dict['category'],
+            condition_weightings=input_dict['condition_weightings']
+        )
+
     def add_points_to_condition(self, condition, points):
         if condition.name in self.condition_weightings.keys():
             points = points * self.condition_weightings[condition.name]
