@@ -1,3 +1,11 @@
+# Venv
 venv
+
+# Docs
 docs
+
+# VSCode
 .vscode
+
+# Pyc
+*.pyc
