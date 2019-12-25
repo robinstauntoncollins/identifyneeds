@@ -38,15 +38,16 @@ class TestMemRepo():
         assert repo.get() == conditions
 
     cnd_by_name_test_data = [
-        ("Autism"),
-        ("Aspergers"),
-        ("ADHD"),
-        ("Anxiety")
+        ("Autism", ['Autism']),
+        ("Aspergers", ['Aspergers']),
+        ("ADHD", ['ADHD']),
+        ("Anxiety", ['Anxiety']),
+        (['Autism', 'Aspergers'], ['Autism', 'Aspergers'])
     ]
 
-    @pytest.mark.parametrize("name", cnd_by_name_test_data)
-    def test_get_condition_by_name(self, name, condition_dicts):
+    @pytest.mark.parametrize("names,expected", cnd_by_name_test_data)
+    def test_get_condition_by_name(self, names, expected, condition_dicts):
         repo = MemRepo(condition_dicts)
-        result = repo.get(filter_name=name)
-        assert result[0].name == name
-        assert isinstance(result[0], Condition)
+        results = repo.get(filter_names=names)
+        result_names = [cnd.name for cnd in results]
+        assert result_names == expected

@@ -42,7 +42,7 @@ class Characteristic():
             points = points * self.condition_weightings[condition.name]
             condition.add_points(points)
 
-    def get_conditions(self):
+    def get_condition_names(self):
         return list(self.condition_weightings.keys())
 
 
