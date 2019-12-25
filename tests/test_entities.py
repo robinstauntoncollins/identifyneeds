@@ -129,6 +129,16 @@ class TestCondition():
         assert cnd.name == 'Autism'
         assert cnd.points == 2
 
+    def test_condition_equals(self):
+        cnd_dict = {
+            'uuid': 'cnd-1',
+            'name': 'Autism',
+            'points': 58
+        }
+        cnd1 = Condition.from_dict(cnd_dict)
+        cnd2 = Condition.from_dict(cnd_dict)
+        assert cnd1 == cnd2
+
     def test_add_points(self):
         cnd = Condition()
         cnd.add_points(5)

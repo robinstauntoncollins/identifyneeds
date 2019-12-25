@@ -58,6 +58,9 @@ class Condition():
     def __repr__(self):
         return f"{self.name} - {self.points}"
 
+    def __eq__(self, other):
+        return self.to_dict() == other.to_dict()
+
     def add_points(self, amount: int):
         self.points += amount
 
