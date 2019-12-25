@@ -1,6 +1,18 @@
 
+class ListConditions():
+    def __init__(self, repo):
+        self.repo = repo
 
-class UpdateConditionsUseCase():
+    def execute(self):
+        return self.repo.get()
 
-    def __init__(self):
-        pass
+
+# class UpdateConditions():
+
+#     def __init__(self, repo, characteristic):
+#         self.repo = repo
+#         self.characteristic = characteristic
+
+#     def execute(self):
+#         self.characteristic.add_
+

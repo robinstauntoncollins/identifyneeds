@@ -116,6 +116,10 @@ class TestCharacteristic():
         disruptive_char.add_points_to_condition(condition, points)
         condition.add_points.assert_called_once_with(called_with)
 
+    def test_get_conditions(self, disruptive_char):
+        result = disruptive_char.get_conditions()
+        assert result == ['Autism', 'Aspergers', 'Conduct Dis', 'OOD', 'Low IQ', 'ADHD', 'Tourettes', 'Giftedness', 'Abuse']
+
 
 class TestCondition():
     def test_condition_init(self):
