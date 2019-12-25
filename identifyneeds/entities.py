@@ -8,10 +8,12 @@ class Characteristic():
             uuid: str = None,
             text: str = None,
             category: str = None,
+            user_input_level: int = 0,
             condition_weightings: Dict[str, int] = None):
         self.uuid = uuid
         self.text = text
         self.category = category
+        self.user_input_level = user_input_level
         self.condition_weightings = condition_weightings
 
     def __str__(self):

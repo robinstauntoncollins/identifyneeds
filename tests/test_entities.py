@@ -13,6 +13,7 @@ class TestCharacteristic():
             uuid=1,
             text="Disruptive in Class",
             category="Motivation and Concentration",
+            user_input_level=2,
             condition_weightings={
                 'Autism': 2,
                 'Aspergers': 1,
@@ -37,6 +38,7 @@ class TestCharacteristic():
             uuid='char-1',
             text="Disruptive in Class",
             category="Motivation and Concentration",
+            user_input_level=2,
             condition_weightings={
                 'Autism': 2,
                 'Aspergers': 1,
@@ -52,6 +54,7 @@ class TestCharacteristic():
         assert char.uuid == 'char-1'
         assert char.text == "Disruptive in Class"
         assert char.category == "Motivation and Concentration"
+        assert char.user_input_level == 2
         assert char.condition_weightings == {
             'Autism': 2,
             'Aspergers': 1,
@@ -117,7 +120,7 @@ class TestCharacteristic():
         condition.add_points.assert_called_once_with(called_with)
 
     def test_get_conditions(self, disruptive_char):
-        result = disruptive_char.get_conditions()
+        result = disruptive_char.get_condition_names()
         assert result == ['Autism', 'Aspergers', 'Conduct Dis', 'OOD', 'Low IQ', 'ADHD', 'Tourettes', 'Giftedness', 'Abuse']
 
 

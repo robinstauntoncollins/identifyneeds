@@ -2,7 +2,7 @@ import pytest
 
 from identifyneeds.entities import Condition, Characteristic
 from identifyneeds.repository import MemRepo
-from identifyneeds.use_cases import ListConditions
+from identifyneeds.use_cases import ListConditions, UpdateConditions
 
 
 class TestListConditionsUseCase():
@@ -48,9 +48,9 @@ class TestUpdateConditionsUseCase():
         return char
 
     def test_update_conditions_use_case(self, characteristic, memrepo):
-        result = ListConditions(memrepo, characteristic).execute()
-        assert result.ok is True
-        assert result.status_code == 200
+        result = UpdateConditions(memrepo, characteristic).execute()
+        assert result['ok'] is True
+        assert result['status_code'] == 200
         affected_conditions = memrepo.get(filter_names=['Anxiety', 'Autism'])
         assert affected_conditions[0].points == 4
         assert affected_conditions[1].points == 2
