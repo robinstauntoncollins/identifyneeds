@@ -15,4 +15,7 @@ class ListConditions():
 
 #     def execute(self):
 #         self.characteristic.add_
+        # conditions_to_fetch = characteristic.get_condition_names()
+        # conditions = memrepo.get(filter_names=conditions_to_fetch)
+        # for condition in conditions
 
