@@ -93,7 +93,7 @@ class TestCharacteristic():
             'uuid': uuid.uuid4(),
             'text': "Disruptive in Class",
             'category': 'Motivation and Concentration',
-            'condition_weighting': {
+            'condition_weightings': {
                 'Autism': 2,
                 'Aspergers': 1,
                 'Conduct Dis': 2,

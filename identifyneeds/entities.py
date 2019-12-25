@@ -29,6 +29,14 @@ class Characteristic():
             condition_weightings=input_dict['condition_weightings']
         )
 
+    def to_dict(self):
+        return {
+            "uuid": self.uuid,
+            "text": self.text,
+            "category": self.category,
+            "condition_weightings": self.condition_weightings
+        }
+
     def add_points_to_condition(self, condition, points):
         if condition.name in self.condition_weightings.keys():
             points = points * self.condition_weightings[condition.name]
