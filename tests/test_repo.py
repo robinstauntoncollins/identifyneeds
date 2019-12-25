@@ -35,4 +35,18 @@ class TestMemRepo():
     def test_init_memrepo(self, condition_dicts):
         repo = MemRepo(condition_dicts)
         conditions = [Condition.from_dict(item_dict) for item_dict in condition_dicts]
-        assert repo.list() == conditions
+        assert repo.get() == conditions
+
+    cnd_by_name_test_data = [
+        ("Autism"),
+        ("Aspergers"),
+        ("ADHD"),
+        ("Anxiety")
+    ]
+
+    @pytest.mark.parametrize("name", cnd_by_name_test_data)
+    def test_get_condition_by_name(self, name, condition_dicts):
+        repo = MemRepo(condition_dicts)
+        result = repo.get(filter_name=name)
+        assert result[0].name == name
+        assert isinstance(result[0], Condition)
