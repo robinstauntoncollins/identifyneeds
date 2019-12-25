@@ -118,7 +118,6 @@ class TestCharacteristic():
 
 
 class TestCondition():
-
     def test_condition_init(self):
         cnd = Condition(
             uuid='cnd-1',
@@ -134,3 +133,24 @@ class TestCondition():
         cnd = Condition()
         cnd.add_points(5)
         assert cnd.points == 5
+
+    def test_from_dict(self):
+        code = uuid.uuid4()
+        input_dict = {
+            'uuid': code,
+            'name': "Autism"
+        }
+        cnd = Condition.from_dict(input_dict)
+        assert cnd.uuid == code
+        assert cnd.name == "Autism"
+        assert cnd.points == 0
+
+    def test_to_dict(self):
+        code = uuid.uuid4()
+        expected = {
+            'uuid': code,
+            'name': 'Autism',
+            'points': 15
+        }
+        cnd = Condition.from_dict(expected)
+        assert cnd.to_dict() == expected

@@ -60,3 +60,18 @@ class Condition():
 
     def add_points(self, amount: int):
         self.points += amount
+
+    @classmethod
+    def from_dict(cls, input_dict: dict):
+        return cls(
+            uuid=input_dict['uuid'],
+            name=input_dict['name'],
+            points=input_dict.get('points', 0)
+        )
+
+    def to_dict(self):
+        return {
+            'uuid': self.uuid,
+            'name': self.name,
+            'points': self.points
+        }
