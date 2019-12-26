@@ -11,13 +11,12 @@ class ListConditions():
 
 class UpdateCondition():
 
-    def __init__(self, repo: Callable, characteristic: Callable):
+    def __init__(self, repo: Callable):
         self.repo = repo
-        self.characteristic = characteristic
 
-    def execute(self):
-        conditions = self.repo.get(filters={'name': self.characteristic.conditions})
+    def execute(self, characteristic: Callable):
+        conditions = self.repo.get(filters={'name': characteristic.conditions})
         for condition in conditions:
-            self.characteristic.add_points_to_condition(condition)
+            characteristic.add_points_to_condition(condition)
         condition_dicts = [condition.to_dict() for condition in conditions]
         self.repo.put(condition_dicts)

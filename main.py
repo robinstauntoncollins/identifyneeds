@@ -66,9 +66,10 @@ def main():
     for char in characteristics:
         print(f"New char user input value: {char.text} - {char.user_input_level}")
 
+    uc_update_condition = UpdateCondition(repo)
     for char in characteristics:
         print(f"Calling 'UpdateCondition' use case on {char.text}")
-        UpdateCondition(repo, char).execute()
+        uc_update_condition.execute(char)
 
     final_conditions = repo.get()
     print("Final condition values:")

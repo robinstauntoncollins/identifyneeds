@@ -55,7 +55,8 @@ class TestUpdateConditionUseCase():
     def test_update_conditions_use_case(self, characteristic, memrepo):
         """Given a characteristic. Update conditions will have the characteristic
         calculate the points and update the points for each of its conditions"""
-        UpdateCondition(memrepo, characteristic).execute()
+        update_condition = UpdateCondition(memrepo)
+        update_condition.execute(characteristic)
         affected_conditions = memrepo.get(filters={'name': ['Anxiety', 'Autism']})
         cnd_dict = {}
         for cnd in affected_conditions:

@@ -13,9 +13,9 @@ class MemRepo():
         condition_objects = [Condition.from_dict(i) for i in self.conditions.values()]
         if not filters:
             return condition_objects
-
         if 'name' in filters.keys():
             return [item for item in condition_objects if item.name in filters['name']]
+        raise NotImplementedError(f"Filtering by something other than 'name' is not supported")
 
     def put(self, condition_dicts: List[dict]):
         self._check_types(condition_dicts)

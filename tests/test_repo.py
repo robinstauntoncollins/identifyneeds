@@ -78,3 +78,8 @@ class TestMemRepo():
         result = repo.get(filters={'name': 'Autism'})
         assert len(result) == 1
         assert result[0] == Condition.from_dict(new_cnd)
+
+    def test_get_by_not_name(self, condition_dicts):
+        repo = MemRepo(condition_dicts)
+        with pytest.raises(NotImplementedError):
+            repo.get(filters={'uuid': 'f89a2398-13f81-1829f8081=12898918'})
