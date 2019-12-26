@@ -9,3 +9,8 @@ docs
 
 # Pyc
 *.pyc
+
+# pycache
+__pycache__
+__pycache__/*
+*/__pycache__/
