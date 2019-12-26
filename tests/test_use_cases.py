@@ -4,7 +4,7 @@ from unittest.mock import Mock
 
 from identifyneeds.entities import Characteristic
 from identifyneeds.repository import MemRepo
-from identifyneeds.use_cases import ListConditions, UpdateConditions
+from identifyneeds.use_cases import ListConditions, UpdateCondition
 
 
 class TestListConditionsUseCase():
@@ -18,7 +18,7 @@ class TestListConditionsUseCase():
         repo.get.assert_called_with()
 
 
-class TestUpdateConditionsUseCase():
+class TestUpdateConditionUseCase():
 
     @pytest.fixture()
     def memrepo(self):
@@ -54,8 +54,8 @@ class TestUpdateConditionsUseCase():
 
     def test_update_conditions_use_case(self, characteristic, memrepo):
         """Given a characteristic. Update conditions will have the characteristic
-        calculate the points and update the points for each of it's conditions"""
-        UpdateConditions(memrepo, characteristic).execute()
+        calculate the points and update the points for each of its conditions"""
+        UpdateCondition(memrepo, characteristic).execute()
         affected_conditions = memrepo.get(filters={'name': ['Anxiety', 'Autism']})
         cnd_dict = {}
         for cnd in affected_conditions:

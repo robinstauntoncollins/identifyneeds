@@ -13,14 +13,26 @@ class Characteristic():
         self.uuid = uuid
         self.text = text
         self.category = category
-        self.user_input_level = user_input_level
+        self._user_input_level = user_input_level
         self.condition_weightings = condition_weightings
+        self.conditions = self._get_condition_names()
 
     def __str__(self):
         return f"{self.text} - Category: {self.category} - Associated Conditions: {self.condition_weightings.keys()}"
 
     def __repr__(self):
         return f"{self.text} - Category: {self.category} - Associated Conditions: {self.condition_weightings.keys()}"
+
+    @property
+    def user_input_level(self):
+        return self._user_input_level
+
+    @user_input_level.setter
+    def user_input_level(self, value):
+        if value not in [0, 1, 2]:
+            raise ValueError(f"User Input value must be either '0', '1' or '2'. Received: {value}")
+        else:
+            self._user_input_level = value
 
     @classmethod
     def from_dict(cls, input_dict: dict):
@@ -46,7 +58,7 @@ class Characteristic():
             points = self.user_input_level * self.condition_weightings[condition.name]
             condition.add_points(points)
 
-    def get_condition_names(self):
+    def _get_condition_names(self):
         return list(self.condition_weightings.keys())
 
 
@@ -60,16 +72,30 @@ class Condition():
     ):
         self.uuid = uuid
         self.name = name
-        self.points = points
+        self._points = points
 
     def __repr__(self):
-        return f"{self.name} - {self.points}"
+        return f"{self.name} - {self._points}"
 
     def __eq__(self, other):
         return self.to_dict() == other.to_dict()
 
+    @property
+    def points(self):
+        return self._points
+
+    @points.setter
+    def points(self, value):
+        if value < 0:
+            raise ValueError(f"Negative integers not allowed. Received {value}")
+        else:
+            self._points = value
+
     def add_points(self, amount: int):
-        self.points += amount
+        if amount <= 0:
+            raise ValueError(f"Expected a positive integer. Received '{amount}")
+        else:
+            self._points += amount
 
     @classmethod
     def from_dict(cls, input_dict: dict):

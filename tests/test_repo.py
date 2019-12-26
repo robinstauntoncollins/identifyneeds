@@ -42,7 +42,8 @@ class TestMemRepo():
         ("Aspergers", ['Aspergers']),
         ("ADHD", ['ADHD']),
         ("Anxiety", ['Anxiety']),
-        (['Autism', 'Aspergers'], ['Autism', 'Aspergers'])
+        (['Autism', 'Aspergers'], ['Autism', 'Aspergers']),
+        ([], []),
     ]
 
     @pytest.mark.parametrize("names,expected", cnd_by_name_test_data)

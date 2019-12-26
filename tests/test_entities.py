@@ -123,8 +123,31 @@ class TestCharacteristic():
         condition.add_points.assert_called_once_with(called_with)
 
     def test_get_condition_names(self, disruptive_char):
-        result = disruptive_char.get_condition_names()
+        result = disruptive_char._get_condition_names()
         assert result == ['Autism', 'Aspergers', 'Conduct Dis', 'OOD', 'Low IQ', 'ADHD', 'Tourettes', 'Giftedness', 'Abuse']
+
+    def test_user_input_level(self, disruptive_char):
+        with pytest.raises(ValueError):
+            disruptive_char.user_input_level = -1
+            disruptive_char.user_input_level = 3
+            disruptive_char.user_input_level = 2.1
+            disruptive_char.user_input_level = 4
+        disruptive_char.user_input_level = 0
+        disruptive_char.user_input_level = 1
+        disruptive_char.user_input_level = 2
+
+    def test_conditions(self, disruptive_char):
+        assert disruptive_char.conditions == [
+            'Autism',
+            'Aspergers',
+            'Conduct Dis',
+            'OOD',
+            'Low IQ',
+            'ADHD',
+            'Tourettes',
+            'Giftedness',
+            'Abuse'
+        ]
 
 
 class TestCondition():
@@ -152,6 +175,17 @@ class TestCondition():
     def test_add_points(self):
         cnd = Condition()
         cnd.add_points(5)
+        assert cnd.points == 5
+
+    def test_add_negative_points_raises_error(self):
+        cnd = Condition()
+        with pytest.raises(ValueError):
+            cnd.add_points(-1)
+
+    def test_set_points(self):
+        cnd = Condition()
+        cnd.points = 5
+        assert cnd._points == 5
         assert cnd.points == 5
 
     def test_from_dict(self):

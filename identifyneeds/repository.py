@@ -20,9 +20,16 @@ class MemRepo():
     def put(self, condition_dicts: List[dict]):
         self._check_types(condition_dicts)
         for cnd in condition_dicts:
-            self.conditions[cnd['uuid']] = cnd
+            if not self.conditions.get(cnd['uuid'], None):
+                print(f"Adding new condition to repo: {cnd}")
+                self.conditions[cnd['uuid']] = cnd
+            else:
+                print(f"Updating condition: {self.conditions[cnd['uuid']]} to {cnd}")
+                self.conditions[cnd['uuid']] = cnd
 
     def _check_types(self, conditions: List[dict]):
+        if type(conditions) is not list:
+            raise TypeError(f"Expected List of 'dicts'. Received: {type(conditions)}")
         for cnd in conditions:
             if type(cnd) is not dict:
                 raise TypeError(f"Expected 'dict' got {type(cnd)}")
