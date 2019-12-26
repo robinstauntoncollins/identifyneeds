@@ -1,4 +1,4 @@
-from typing import Optional, List, Union
+from typing import List, Dict
 
 from identifyneeds.entities import Condition
 
@@ -6,11 +6,23 @@ from identifyneeds.entities import Condition
 class MemRepo():
 
     def __init__(self, condition_dicts):
-        self.conditions = condition_dicts
+        self.conditions = {}
+        self.put(condition_dicts)
 
-    def get(self, filter_names: Optional[Union[str, List[str]]] = None):
-        condition_objects = [Condition.from_dict(i) for i in self.conditions]
-        if not filter_names:
+    def get(self, filters: Dict = None):
+        condition_objects = [Condition.from_dict(i) for i in self.conditions.values()]
+        if not filters:
             return condition_objects
-        else:
-            return [item for item in condition_objects if item.name in filter_names]
+
+        if 'name' in filters.keys():
+            return [item for item in condition_objects if item.name in filters['name']]
+
+    def put(self, condition_dicts: List[dict]):
+        self._check_types(condition_dicts)
+        for cnd in condition_dicts:
+            self.conditions[cnd['uuid']] = cnd
+
+    def _check_types(self, conditions: List[dict]):
+        for cnd in conditions:
+            if type(cnd) is not dict:
+                raise TypeError(f"Expected 'dict' got {type(cnd)}")

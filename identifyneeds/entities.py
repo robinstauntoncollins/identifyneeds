@@ -28,6 +28,7 @@ class Characteristic():
             uuid=input_dict['uuid'],
             text=input_dict['text'],
             category=input_dict['category'],
+            user_input_level=input_dict['user_input_level'],
             condition_weightings=input_dict['condition_weightings']
         )
 
@@ -36,12 +37,13 @@ class Characteristic():
             "uuid": self.uuid,
             "text": self.text,
             "category": self.category,
+            "user_input_level": self.user_input_level,
             "condition_weightings": self.condition_weightings
         }
 
-    def add_points_to_condition(self, condition, points):
+    def add_points_to_condition(self, condition):
         if condition.name in self.condition_weightings.keys():
-            points = points * self.condition_weightings[condition.name]
+            points = self.user_input_level * self.condition_weightings[condition.name]
             condition.add_points(points)
 
     def get_condition_names(self):

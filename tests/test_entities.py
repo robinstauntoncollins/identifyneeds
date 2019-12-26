@@ -73,6 +73,7 @@ class TestCharacteristic():
             "uuid": code,
             "text": "Disruptive in Class",
             "category": "Motivation and Concentration",
+            'user_input_level': 2,
             "condition_weightings": {
                 'Autism': 2,
                 'Aspergers': 1,
@@ -84,6 +85,7 @@ class TestCharacteristic():
         assert char.uuid == code
         assert char.text == "Disruptive in Class"
         assert char.category == "Motivation and Concentration"
+        assert char.user_input_level == 2
         assert char.condition_weightings == {
             'Autism': 2,
             'Aspergers': 1,
@@ -96,6 +98,7 @@ class TestCharacteristic():
             'uuid': uuid.uuid4(),
             'text': "Disruptive in Class",
             'category': 'Motivation and Concentration',
+            'user_input_level': 2,
             'condition_weightings': {
                 'Autism': 2,
                 'Aspergers': 1,
@@ -107,19 +110,19 @@ class TestCharacteristic():
         assert char.to_dict() == char_dict
 
     add_points_test_data = [
-        ("Autism", 2, 4),
-        ("Aspergers", 2, 2),
-        ("Conduct Dis", 2, 4)
+        ("Autism", 4),
+        ("Aspergers", 2),
+        ("Conduct Dis", 4)
     ]
 
-    @pytest.mark.parametrize("name,points,called_with", add_points_test_data)
-    def test_add_points_to_condition(self, name, points, called_with, disruptive_char, mock_condition):
+    @pytest.mark.parametrize("name,called_with", add_points_test_data)
+    def test_add_points_to_condition(self, name, called_with, disruptive_char, mock_condition):
         condition = mock_condition
         condition.name = name
-        disruptive_char.add_points_to_condition(condition, points)
+        disruptive_char.add_points_to_condition(condition)
         condition.add_points.assert_called_once_with(called_with)
 
-    def test_get_conditions(self, disruptive_char):
+    def test_get_condition_names(self, disruptive_char):
         result = disruptive_char.get_condition_names()
         assert result == ['Autism', 'Aspergers', 'Conduct Dis', 'OOD', 'Low IQ', 'ADHD', 'Tourettes', 'Giftedness', 'Abuse']
 

@@ -11,16 +11,14 @@ class ListConditions():
 
 class UpdateConditions():
 
-    def __init__(self, repo: Callable, characteristic: Callable, user_input_level: int):
+    def __init__(self, repo: Callable, characteristic: Callable):
         self.repo = repo
         self.characteristic = characteristic
-        self.user_input_level = user_input_level
 
     def execute(self):
-        self.characteristic.add_condition
-        # conditions_to_fetch = characteristic.get_condition_names()
-        # conditions = memrepo.get(filter_names=conditions_to_fetch)
-        # for condition in conditions
-        result = {'ok': True, 'status_code': 200}
-        return result
-
+        conditions_to_fetch = self.characteristic.get_condition_names()
+        conditions = self.repo.get(filters={'name': conditions_to_fetch})
+        for condition in conditions:
+            self.characteristic.add_points_to_condition(condition)
+        condition_dicts = [condition.to_dict() for condition in conditions]
+        self.repo.put(condition_dicts)
