@@ -9,8 +9,8 @@ docs
 
 # Pyc
 *.pyc
+*.*.pyc
 
 # pycache
 __pycache__
-__pycache__/*
-*/__pycache__/
+identifyneeds/__pycache__/
