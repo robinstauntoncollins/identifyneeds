@@ -14,4 +14,4 @@ docs
 # pycache
 __pycache__/
 identifyneeds/__pycache__/
-identifyneeds/__pycache__/*.pyc
+identifyneeds/__pycache__/*.*.pyc

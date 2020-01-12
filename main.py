@@ -1,7 +1,7 @@
 from uuid import uuid4 as get_uuid
 
 from identifyneeds.entities import Characteristic, Condition
-from identifyneeds.use_cases import UpdateCondition
+from identifyneeds.use_cases import UpdateCondition, GetMostLikelyConditions
 from identifyneeds.repository import MemRepo
 
 
@@ -45,14 +45,15 @@ def get_conditions(characteristics_list):
     conditions = []
     for char in characteristics_list:
         conditions += char.conditions
-    print(conditions)
-    return [Condition(uuid=str(get_uuid()), name=condition) for condition in conditions]
+    conditions_set = set(conditions)
+    print(f"Conditions: {conditions_set}")
+    return [Condition(uuid=str(get_uuid()), name=condition) for condition in list(conditions_set)]
 
 
 def main():
     characteristics = get_characteristics()
     conditions_objs = get_conditions(characteristics)
-    print(conditions_objs)
+    print(f"Condition objects: {conditions_objs}")
     print(f"Going into MemRepo: {[cnd.to_dict() for cnd in conditions_objs]}")
     repo = MemRepo([cnd.to_dict() for cnd in conditions_objs])
     print(f"Current state of repo: {repo.get()}")
@@ -75,6 +76,9 @@ def main():
     print("Final condition values:")
     for cnd in final_conditions:
         print(cnd)
+
+    most_likely = GetMostLikelyConditions(repo).execute()
+    print(f"The most likely condition(s) of the child is/are: {most_likely}")
 
 
 if __name__ == '__main__':

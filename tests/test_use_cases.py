@@ -4,7 +4,26 @@ from unittest.mock import Mock
 
 from identifyneeds.entities import Characteristic
 from identifyneeds.repository import MemRepo
-from identifyneeds.use_cases import ListConditions, UpdateCondition
+from identifyneeds.use_cases import ListConditions, UpdateCondition, GetMostLikelyConditions
+
+
+@pytest.fixture()
+def memrepo():
+    repo = MemRepo([
+        {
+            'uuid': 'cnd-1',
+            'name': 'Autism',
+        },
+        {
+            'uuid': 'cnd-2',
+            'name': 'Aspergers',
+        },
+        {
+            'uuid': 'cnd-3',
+            'name': 'Anxiety',
+        }
+    ])
+    return repo
 
 
 class TestListConditionsUseCase():
@@ -19,24 +38,6 @@ class TestListConditionsUseCase():
 
 
 class TestUpdateConditionUseCase():
-
-    @pytest.fixture()
-    def memrepo(self):
-        repo = MemRepo([
-            {
-                'uuid': 'cnd-1',
-                'name': 'Autism',
-            },
-            {
-                'uuid': 'cnd-2',
-                'name': 'Aspergers'
-            },
-            {
-                'uuid': 'cnd-3',
-                'name': 'Anxiety'
-            }
-        ])
-        return repo
 
     @pytest.fixture()
     def characteristic(self):
@@ -63,3 +64,73 @@ class TestUpdateConditionUseCase():
             cnd_dict[cnd.name] = cnd
         assert cnd_dict['Anxiety'].points == 4
         assert cnd_dict['Autism'].points == 2
+
+
+class TestGetMostLikelyConditions():
+
+    @pytest.fixture()
+    def memrepo(self):
+        return MemRepo([
+            {
+                'uuid': 'cnd-1',
+                'name': 'Autism',
+                'points': 5
+            },
+            {
+                'uuid': 'cnd-2',
+                'name': 'Aspergers',
+                'points': 4
+            },
+            {
+                'uuid': 'cnd-3',
+                'name': 'Anxiety',
+                'points': 2
+            }
+        ])
+
+    def test_get_most_likely_condition(self, memrepo):
+        uc = GetMostLikelyConditions(memrepo)
+        results = uc.execute()
+        result = [cnd.to_dict() for cnd in results]
+        assert result == [{
+            'uuid': 'cnd-1',
+            'name': 'Autism',
+            'points': 5
+        }]
+
+    @pytest.fixture()
+    def memrepo_with_two_highest(self):
+        return MemRepo([
+            {
+                'uuid': 'cnd-1',
+                'name': 'Anxiety',
+                'points': 5
+            },
+            {
+                'uuid': 'cnd-2',
+                'name': 'Aspergers',
+                'points': 5
+            },
+            {
+                'uuid': 'cnd-3',
+                'name': 'ADHD',
+                'points': 4
+            }
+        ])
+
+    def test_get_all_most_likely(self, memrepo_with_two_highest):
+        uc = GetMostLikelyConditions(memrepo_with_two_highest)
+        result = uc.execute()
+        result = [cnd.to_dict() for cnd in result]
+        assert result == [
+            {
+                'uuid': 'cnd-1',
+                'name': 'Anxiety',
+                'points': 5
+            },
+            {
+                'uuid': 'cnd-2',
+                'name': 'Aspergers',
+                'points': 5
+            }
+        ]
