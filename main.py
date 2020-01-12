@@ -1,43 +1,28 @@
 from uuid import uuid4 as get_uuid
 
+from yaml import safe_load
+
 from identifyneeds.entities import Characteristic, Condition
 from identifyneeds.use_cases import UpdateCondition, GetMostLikelyConditions
 from identifyneeds.repository import MemRepo
 
 
-def get_characteristics():
+def get_characteristics_from_file(file_name):
+    """Given a yaml file, read it and generate a list of characteristics from the data"""
+    with open(file_name, 'r') as f:
+        data = safe_load(f.read())
+    characteristics_list = get_characteristics(data)
+    return characteristics_list
+
+
+def get_characteristics(data):
     return [
         Characteristic(
             uuid=get_uuid(),
-            text="Disruptive in Class",
-            category="Motivation and Concentration",
-            condition_weightings={
-                'Autism': 2,
-                'Aspergers': 1,
-                'Conduct Dis': 2,
-                'OOD': 2,
-                'Low IQ': 1,
-                'ADHD': 2,
-                'Tourettes': 2,
-                'Giftedness': 1,
-                'Abuse': 1
-            }
-        ),
-        Characteristic(
-            uuid=get_uuid(),
-            text="Slow to start/complete work",
-            category="Motivation and Concentration",
-            condition_weightings={
-                'Anxiety': 1,
-                'Depression': 1,
-                'Low IQ': 2,
-                'ADD-I': 2,
-                'ADHD': 2,
-                'SLD Dsl': 2,
-                'SPLan': 1,
-                'Giftedness': 1
-            }
-        )
+            text=info['text'],
+            category=info['category'],
+            condition_weightings=info['condition_weightings'])
+        for char, info in data.items()
     ]
 
 
@@ -51,7 +36,9 @@ def get_conditions(characteristics_list):
 
 
 def main():
-    characteristics = get_characteristics()
+    file_name = 'characteristics.yml'
+    characteristics = get_characteristics_from_file(file_name)
+    print(f"Characteristics: {characteristics}")
     conditions_objs = get_conditions(characteristics)
     print(f"Condition objects: {conditions_objs}")
     print(f"Going into MemRepo: {[cnd.to_dict() for cnd in conditions_objs]}")
