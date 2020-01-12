@@ -1,8 +1,8 @@
 from uuid import uuid4 as get_uuid
 
-from identifyneeds.repository import MemRepo
 from identifyneeds.entities import Characteristic, Condition
 from identifyneeds.use_cases import UpdateCondition
+from identifyneeds.repository import MemRepo
 
 
 def get_characteristics():

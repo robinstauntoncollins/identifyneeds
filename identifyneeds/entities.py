@@ -92,8 +92,8 @@ class Condition():
             self._points = value
 
     def add_points(self, amount: int):
-        if amount <= 0:
-            raise ValueError(f"Expected a positive integer. Received '{amount}")
+        if amount < 0:
+            raise ValueError(f"Expected a positive integer. Received '{amount}'")
         else:
             self._points += amount
 

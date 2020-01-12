@@ -172,10 +172,17 @@ class TestCondition():
         cnd2 = Condition.from_dict(cnd_dict)
         assert cnd1 == cnd2
 
-    def test_add_points(self):
+    add_points_test_data = [
+        (2, 2),
+        (1, 1),
+        (0, 0)
+    ]
+
+    @pytest.mark.parametrize("points,expected", add_points_test_data)
+    def test_add_points(self, points, expected):
         cnd = Condition()
-        cnd.add_points(5)
-        assert cnd.points == 5
+        cnd.add_points(points)
+        assert cnd.points == expected
 
     def test_add_negative_points_raises_error(self):
         cnd = Condition()
