@@ -1,0 +1,413 @@
+Disruptive:
+  text: Disruptive in Class
+  category: Motivation and Concentration
+  condition_weightings:
+    Autism: 2
+    Aspergers: 1
+    Conduct Dis: 2
+    OOD: 2
+    Low IQ: 1
+    ADHD: 2
+    Tourettes: 2
+    Giftedness: 1
+    Abuse: 1
+
+Slow to Work:
+  text: Slow to start/complete Work
+  category: Motivation and Concentration
+  condition_weightings:
+    Anxiety: 1
+    Depression: 1
+    Low IQ: 2
+    ADD-I: 2
+    ADHD: 2
+    SLD Dysl: 2
+    SPLan: 1
+    Giftedness: 1
+
+Homework not Completed:
+  text: Homework not completed properly
+  category: Motivation and Concentration
+  condition_weightings:
+    Depression: 1
+    Conduct Dis: 2
+    ODD: 2
+    Low IQ: 2
+    ADD-I: 2
+    ADHD: 2
+    SLD Dysl: 2
+
+Complains of Boredom:
+  text: Complains of being bored in school
+  category: Motivation and Concentration
+  condition_weightings:
+    Depression: 2
+    ODD: 1
+    Low IQ: 1
+    ADD-I: 2
+    ADHD: 1
+    Giftedness: 2
+
+Lacks Confidence:
+  text: Lacks confidence in own ability
+  category: Motivation and Concentration
+  condition_weightings:
+    Aspergers: 1
+    Anxiety: 2
+    Depression: 1
+    Low IQ: 1
+    ADD-I: 2
+    SLD Dysl: 1
+    SpLan: 1
+    Low s/e: 1
+    Abuse: 1
+
+World of their own:
+  text: In a world of their own
+  category: Motivation and Concentration
+  condition_weightings:
+    Autism: 2
+    Aspergers: 1
+    Depression: 1
+    ADD-I: 2
+    Giftedness: 1
+    Abuse: 1
+
+Careless Messy Work:
+  text: Careless/messy work
+  category: Motivation and Concentration
+  condition_weightings:
+    Autism: 2
+    Aspergers: 1
+    Low IQ: 2
+    ADHD: 2
+    SLD Dysl: 2
+    DCD: 2
+
+Lacks Motivation:
+  text: Lacks Motivation
+  category: Motivation and Concentration
+  condition_weightings:
+    Depression: 2
+    Low IQ: 1
+    ADHD: 1
+    SLD Dysl: 1
+    Abuse: 1
+
+Complains work too hard:
+  text: Complains that the work is too hard
+  category: Motivation and Concentration
+  condition_weightings:
+    Anxiety: 1
+    Depression: 1
+    Low IQ: 2
+    ADD-I: 2
+    SLD Dysl: 2
+    Immaturity: 1
+    Low s/e: 1
+
+Impulsive:
+  text: Impulsive
+  category: Motivation and Concentration
+  condition_weightings:
+    ADHD: 2
+
+Cannot use Language:
+  text: Cannot use language effectively
+  category: Communication
+  condition_weightings: 
+    Autism: 2
+    Low IQ: 2
+    SpLan: 2
+
+Speaks like a professor:
+  text: Speaks "like a professor"
+  category: Communication
+  condition_weightings:
+    Aspergers: 2
+    Giftedness: 2
+
+Poor interpreting non-verbal expression:
+  text: Poor interpreting non-verbal expression
+  category: Communication
+  condition_weightings:
+    Autism: 2
+    Aspergers: 2
+    Low IQ: 2
+
+Reluctant to speak:
+  text: Reluctant to speak in some settings
+  category: Communication
+  condition_weightings:
+    Anxiety: 1
+    Mutism: 2
+    SpLan: 2
+
+Makes inappropriate noises:
+  text: Makes inappropriate noises
+  category: Communication
+  condition_weightings:
+    Autism: 2
+    Low IQ: 1
+    ADHD: 2
+    Tourettes: 2
+
+Difficulty pronoucing words:
+  text: Difficulty pronouncing some words
+  category: Communication
+  condition_weightings:
+    Low IQ: 1
+    SLD Dysl: 1
+    SpLan: 2
+    DCD: 2
+
+Difficulty remembering instructions:
+  text: Difficulty remembering instructions
+  category: Communication
+  condition_weightings:
+    Low IQ: 2
+    ADD-I: 2
+    ADHD: 2
+    SLD Dysl: 2
+    SpLan: 2
+
+Gets muddled recounting event:
+  text: Gets muddled recounting an event
+  category: Communication
+  condition_weightings:
+    Low IQ: 2
+    SpLan: 2
+
+Restless/Inattentive when others speaking:
+  text: Restless/Inattentive when others are speaking
+  category: Communication
+  condition_weightings:
+    Autism: 2
+    Low IQ: 2
+    ADD-I: 2
+    ADHD: 2
+    SpLan: 2
+
+Suspected hearing difficulty:
+  text: Suspected of hearing difficulty
+  category: Communication
+  condition_weightings:
+    Autism: 1
+    Depression: 2
+    ADD-I: 2
+    ADHD: 2
+    SpLan: 2
+
+Few friends:
+  text: Has few if any friends
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Aspergers: 2
+    Conduct Dis: 2
+    ODD: 2
+    Low IQ: 1
+
+Easily annoyed/aggressive:
+  text: Easily annoyed/aggresive
+  category: Social and Emotional
+  condition_weightings:
+    Depression: 2
+    Conduct Dis: 2
+    ODD: 2
+    ADD: 1
+    Abuse: 1
+
+Poor empathy:
+  text: Poor empathy with others
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Aspergers: 2
+    Conduct Dis: 2
+    ODD: 2
+
+Doesnt obey instructions:
+  text: Doesn't obey requests/instructions
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Conduct Dis: 2
+    ODD: 2
+    Low IQ: 1
+    ADD-I: 1
+    ADHD: 1
+    SpLan: 2
+
+Easily upset:
+  text: Easily upset if things not going their way
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Aspergers: 2
+    Anxiety: 1
+    Depression: 2
+    Conduct Dis: 2
+    ODD: 2
+    Low IQ: 1
+    ADHD: 1
+    Immaturity: 1
+
+Over-dependent:
+  text: Over-dependent on adults
+  category: Social and Emotional
+  condition_weightings:
+    Anxiety: 1
+    Low IQ: 1
+    Immaturity: 1
+    Low s/e: 1
+    Abuse: 1
+
+Bullies others:
+  text: Bullies/harasses others
+  category: Social and Emotional
+  condition_weightings:
+    Conduct Dis: 2
+    ODD: 2
+
+Rigid/obsessional:
+  text: Rigid/obsessional
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Aspergers: 2
+    Anxiety: 1
+    Mutism: 1
+    ODD: 2
+    Tourettes: 1
+
+Has unusual interests:
+  text: Has odd/unusual interests
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Aspergers: 2
+    Giftedness: 2
+
+Sexually inappropriate behaviour:
+  text: Sexually inappropriate behaviour
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Conduct Dis: 2
+    ODD: 2
+    Low IQ: 1
+    Abuse: 2
+
+Poor self-control:
+  text: Poor self-control
+  category: Social and Emotional
+  condition_weightings:
+    Autism: 2
+    Conduct Dis: 2
+    ODD: 2
+    Low IQ: 1
+    ADHD: 1
+  
+Easily upset/worried:
+  text: Easily upset/worried
+  category: Social and Emotional
+  condition_weightings: 
+    Autism: 2
+    Aspergers: 2
+    Anxiety: 2
+    Mutism: 1
+    Depression: 2
+    Low IQ: 1
+    Tourettes: 1
+    Immaturity: 1
+    Abuse: 1
+
+Literacy not up to age standard:
+  text: Literacy not up to age standard
+  category: Learning
+  condition_weightings:
+    Autism: 2
+    Low IQ: 2
+    SLD Dysl: 2
+    SpLan: 2
+
+Numeracy not up to age standard:
+  text: Numeracy not up to age standard
+  category: Learning
+  condition_weightings:
+    Autism: 2
+    Low IQ: 2
+    SLD Dysl: 2
+    SpLan: 2
+
+Reading comp better than reading accuracy:
+  text: Reading comp better than reading accuracy
+  category: Learning
+  condition_weightings:
+    SLD Dysl: 2
+
+
+Reading accuracy better than reading comp:
+  text: Reading accuracy better than reading comp
+  category: Learning
+  condition_weightings: 
+    Autism: 2
+    Aspergers: 2
+    Low IQ: 1
+    SpLan: 2
+
+Inaccurate spelling:
+  text: Inaccurate spelling (worse than others same age)
+  category: Learning
+  condition_weightings:
+    Low IQ: 2
+    SLD Dysl: 2
+    SpLan: 1
+
+
+Poor handwriting:
+  text: Poor handwriting in copies or on sheets
+  category: Learning
+  condition_weightings:
+    Autism: 1
+    Aspergers: 1
+    Low IQ: 2
+    ADHD: 1
+    SLD Dysl: 2
+    Immaturity: 1
+    DCD: 2
+
+Results do not reflect effort:
+  text: Results do not reflect effort put in
+  category: Learning
+  condition_weightings: 
+    Low IQ: 2
+    SLD Dysl: 2
+    SpLan: 1
+    DCD: 2
+
+Dislikes reading or writing:
+  text: Dislikes reading or writing
+  category: Learning
+  condition_weightings: 
+    Low IQ: 2
+    ADD-I: 2
+    ADHD: 2
+    SLD Dysl: 2
+    SpLan: 2
+
+Written language poorly structured:
+  text: Written language poorly structured
+  category: Learning
+  condition_weightings: 
+    Low IQ: 2
+    SLD Dysl: 2
+    SpLan: 2
+
+Difficulty learning times tables:
+  text: Difficulty learning times tables
+  category: Learning
+  condition_weightings: 
+    Low IQ: 2
+    SLD Dysl: 2

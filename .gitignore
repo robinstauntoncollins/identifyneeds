@@ -15,3 +15,4 @@ docs
 __pycache__/
 identifyneeds/__pycache__/
 identifyneeds/__pycache__/*.*.pyc
+identifyneeds/__init__.py

@@ -16,19 +16,30 @@ def get_characteristics_from_file(file_name):
 
 
 def get_characteristics(data):
-    return [
-        Characteristic(
+    # return [
+    #     Characteristic(
+    #         uuid=get_uuid(),
+    #         text=info['text'],
+    #         category=info['category'],
+    #         condition_weightings=info['condition_weightings'])
+    #     for char, info in data.items()
+    # ]
+    char_list = []
+    for char, info in data.items():
+        print(f"Char: {char}, Info: {info}")
+        char_list.append(Characteristic(
             uuid=get_uuid(),
             text=info['text'],
             category=info['category'],
-            condition_weightings=info['condition_weightings'])
-        for char, info in data.items()
-    ]
+            condition_weightings=info['condition_weightings']
+        ))
+    return char_list
 
 
 def get_conditions(characteristics_list):
     conditions = []
     for char in characteristics_list:
+        print(f"Working on {char}")
         conditions += char.conditions
     conditions_set = set(conditions)
     print(f"Conditions: {conditions_set}")
@@ -48,7 +59,10 @@ def main():
     for char in characteristics:
         user_input = None
         while user_input not in [0, 1, 2]:
-            user_input = int(input(f"{char.text} - (Choose: 0, 1 or 2): "))
+            try:
+                user_input = int(input(f"{char.category} - {char.text} - (Choose: 0, 1 or 2): "))
+            except ValueError:
+                print(f"Invalid value. Please try again.")
         char.user_input_level = user_input
 
     for char in characteristics:
